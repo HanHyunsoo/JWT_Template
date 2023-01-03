@@ -1,0 +1,34 @@
+version: "3"
+services:
+  test_db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    container_name: test-db
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --skip-character-set-client-handshake
+    volumes:
+      - "test_db_volume:/Users/hanhyunsoo/dev/volumes/test_db"
+    restart: on-failure
+    ports:
+      - "3306:3306"
+  test_redis:
+    image: redis:alpine
+    container_name: test-redis
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    volumes:
+      - "test_redis_volume:/Users/hanhyunsoo/dev/volumes/test_redis"
+    ports:
+      - "6379:6379"
+
+volumes:
+  test_db_volume:
+  test_redis_volume:
