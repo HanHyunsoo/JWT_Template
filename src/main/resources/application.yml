@@ -1,0 +1,48 @@
+jwt:
+  secret:
+    access: SGVsbG8zMTIyMzEgTXkgbmFtZTMxMjMyMSBpczMxMzIxIEhhbkh5dW5Tb28zMTIzMQ==
+    refresh: 64KYIOugiOuNsDMyMTIxM+umrDLrnpEg6re4MzIxMuqxsCDsgqzqs6AyMzEyMzHsi7bri6QyMzEyMTM=
+
+# ?? ??
+spring:
+  # ??? ?? ??
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test_db
+    username: \
+    password: user
+    hikari:
+      pool-name: jpa-hikari-pool
+      maximum-pool-size: 5
+      jdbc-url: jdbc:mysql://localhost:3306/test_db
+      username: user
+      password: user
+      driver-class-name: ${spring.datasource.driver-class-name}
+      data-source-properties:
+        rewriteBatchedStatements: true
+  # JPA ??
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57Dialect
+        hbm2ddl.import_files_sql_extractor: org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        default_batch_fetch_size: ${chunkSize:100}
+        jdbc.batch_size: 20
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+#  config:
+#    activate:
+#      on-profile: development
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+cors:
+  allowed-origins: "*"
