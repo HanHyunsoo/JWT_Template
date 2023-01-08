@@ -14,6 +14,7 @@ public enum StatusEnum {
 
     // 400
     NOT_EXPIRED_ACCESS_TOKEN(BAD_REQUEST, "Access token이 만료되지 않았습니다"),
+    USERNAME_ALREADY_EXISTS(BAD_REQUEST, "해당 username을 가진 user가 이미 존재합니다."),
 
     // 401
     INVALID_ACCESS_TOKEN(UNAUTHORIZED, "Access token이 잘못되었습니다."),

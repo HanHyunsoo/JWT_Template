@@ -30,6 +30,10 @@ public class AuthService {
 
     @Transactional
     public void signUp(UserDTO userRequest) {
+        if (userRepository.findByUsername(userRequest.username()).isPresent()) {
+            throw new UsernameAlreadyExistsException();
+        }
+
         User user = User.builder()
                 .username(userRequest.username())
                 .password(passwordEncoder.encode(userRequest.password()))
