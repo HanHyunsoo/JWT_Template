@@ -20,6 +20,7 @@ public enum StatusEnum {
     INVALID_ACCESS_TOKEN(UNAUTHORIZED, "Access token이 잘못되었습니다."),
     INVALID_REFRESH_TOKEN(UNAUTHORIZED, "Refresh token이 잘못되었습니다."),
     ACCESS_TOKEN_IS_NULL(UNAUTHORIZED, "Access_token이 존재하지 않습니다."),
+    LOGIN_FAILED(UNAUTHORIZED, "유저 ID나 비밀번호가 틀립니다."),
 
     // 403
     EXPIRE_ACCESS_TOKEN(FORBIDDEN, "Access token이 만료되었습니다."),
